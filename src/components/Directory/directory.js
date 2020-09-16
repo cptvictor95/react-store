@@ -5,7 +5,7 @@ import './styles.scss';
 import Accessories from './../../assets/acc2.jpeg';
 import Dresses from './../../assets/img1.jpeg';
 
-const Directory = () => {
+const Directory = props => {
   return (
     <section className="directory">
         <div className="directory__wrap">

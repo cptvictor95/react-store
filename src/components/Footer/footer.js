@@ -1,10 +1,12 @@
 import React from 'react';
 import './styles.scss';
 
-const Footer = () => {
+const Footer = props => {
   return (
-    <footer>
-        <h1>footer</h1>
+    <footer className="footer">
+        <div className="footer__wrap">
+          footer 2020
+        </div>
     </footer>
 
   );
