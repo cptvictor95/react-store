@@ -1,12 +1,30 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+import Footer from './components/Footer/footer';
+
+// Components Imports
+import Header from './components/Header/header';
+import Home from './pages/Home/home';
+
 
 function App() {
-  return (
-    <div className="App">
-      <h1>logo</h1>
-    </div>
-  );
+    return (
+      <div className="App">
+
+        <Header />
+
+        <main className="App__main">
+
+
+          <Home />
+
+
+        </main>
+
+        <Footer />
+
+      </div>
+    );
 }
 
 export default App;
