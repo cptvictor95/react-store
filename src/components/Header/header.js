@@ -13,7 +13,8 @@ const Header = props => {
       <nav className="header__nav">
         <span className="nav__span">
           <Link to="/">
-            <img className="span__img" src={Logo} alt="Cleo Cardoso Atelier LOGO"/>
+            {/* <img className="span__img" src={Logo} alt="Cleo Cardoso Atelier LOGO"/> */}
+            <span>flea store</span>
           </Link>
         </span>
         <div className="callToActions">

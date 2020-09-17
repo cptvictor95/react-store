@@ -6,8 +6,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { auth, handleUserProfile } from './firebase/utils';
 
 // Layouts
-import MainLayout from './layouts/MainLayout.js'
-import HomeLayout from './layouts/MainLayout.js'
+import MainLayout from './layouts/mainLayout.js'
+import HomeLayout from './layouts/homeLayout.js'
 
 // Components Imports
 import Home from './pages/Home/home';
@@ -64,7 +64,7 @@ class App extends Component {
                 </HomeLayout>
               )} />
   
-              <Route path='/register' render={() => (
+              <Route path='/register' render={() => currentUser ? <Redirect to="/" /> : (
                 <MainLayout currentUser={currentUser}>
                   <Registration />
                 </MainLayout>
