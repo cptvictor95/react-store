@@ -8,8 +8,8 @@ import Footer from '../components/Footer/footer';
 const HomeLayout = props => {
     return (
         <div className="App__main">
-            <Header />
-            {props.children}
+            <Header {...props} />
+                {props.children}
             <Footer />
         </div>
     )

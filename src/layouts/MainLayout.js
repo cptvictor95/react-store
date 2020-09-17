@@ -8,7 +8,7 @@ import Footer from '../components/Footer/footer';
 const MainLayout = props => {
     return (
         <div className="fullHeight">
-            <Header />
+            <Header {...props} />
             <div className="App__main">
                 {props.children}
             </div>
