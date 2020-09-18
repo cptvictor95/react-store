@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import './styles.scss';
 
@@ -8,55 +8,32 @@ import Button from '../Forms/Button/button';
 
 import { auth } from './../../firebase/utils';
 
-const initialState = {
-    email: '',
-    errors: []
-}
 
-class ForgotPassword extends Component {
-    constructor() {
-        super();
-        this.state = {
-            ...initialState
-        };
+const ForgotPassword = (props) => {
+    const [email, setEmail] = useState('');
+    const [errors, setErrors] = useState([]);
 
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(e) {
-        const { name, value } = e.target;
-        this.setState({
-            [name]: value
-        })
-    }
-
-    handleFPSubmit = (e) => {
+    const handleFPSubmit = (e) => {
         e.preventDefault();
 
         try {
-            const { email } = this.state;
-
             const config = {
                 url: 'http://localhost:3000/login'
             }
 
             auth.sendPasswordResetEmail(email, config)
                 .then(() => {
-                    this.props.history.push('/login');
+                    props.history.push('/login');
                 })
                 .catch(() => {
                     const err = ['Email doesn\'t exist. Try again.'];
-                    this.setState({
-                        errors: err
-                    })
+                    setErrors(err);
                 });
         } catch(err) {
             console.log(err);
         }
     }
 
-    render() {
-        const { email, errors } = this.state;
 
         const configAuthWrapper = {
             headline: 'Forgot your password?'
@@ -80,13 +57,13 @@ class ForgotPassword extends Component {
                         )}
 
                     <p>Please enter your email so you can make a new one.</p>
-                        <form onSubmit={this.handleFPSubmit}>
+                        <form onSubmit={handleFPSubmit}>
                             <FormInput
                             type="email"
                             name="email"
                             value={email}
                             placeholder="Enter your registered email here"
-                            onChange={this.handleChange}
+                            handleChange={e => setEmail(e.target.value)}
                             />
                             <Button type="submit">
                                 Recover
@@ -96,7 +73,6 @@ class ForgotPassword extends Component {
                 </div>
             </AuthWrapper>
           );
-    }
   }
 
 export default withRouter(ForgotPassword);
