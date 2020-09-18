@@ -56,7 +56,7 @@ class ForgotPassword extends Component {
     }
 
     render() {
-        const { email, name, errors } = this.state;
+        const { email, errors } = this.state;
 
         const configAuthWrapper = {
             headline: 'Forgot your password?'
