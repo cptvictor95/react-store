@@ -1,26 +1,25 @@
-.signUp {
-    display: block;
-    width: 100%;
-    max-width: 50rem;
-    margin: 4rem auto 6rem;
-    border: none;
-    box-shadow: .5rem .5rem 5rem lightgrey;
-    border-radius: 1rem;
-    color: #3C332A;
 
-    .signUp__wrap {
-        padding: 2rem;
+.signUp__wrap {
 
-        h2 {
-            font-size: 2rem;
-            line-height: 1;
-            font-weight: 400;
-            text-transform: uppercase;
-            text-align: center;
-            display: block;
-            width: 100%;
-            margin: 0 auto;
+    form {
+        // padding-bottom: 3rem;
+        padding-bottom: 0;
+        width: 80%;
+        margin: 0 auto;
+        .userInfos {
+            &:first-child {
+                margin-top: 3rem !important;
+            }
+            &:last-child {
+                margin-top: 0 !important;
+            }
         }
 
+        .passInputs {
+            display: flex;
+            input {
+                margin-top: 0;
+            }
+        }
     }
 }

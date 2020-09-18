@@ -4,7 +4,7 @@
     max-width: 20rem;
     padding: 1.5rem 0;
     margin: 1rem auto 1rem;
-    color: #3C332A;
+    color: #070F08;
     background-color: #A8D4AD;
     border: none;
     border-radius: .5rem;
@@ -13,11 +13,18 @@
     font-size: 1.6rem;
     text-transform: uppercase;
     cursor: pointer;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
     &:last-child {
         margin-bottom: 0;
     }
 }
 
 .btn:hover {
-    color: black;
+    color: #A8D4AD;
+    background: #070F08;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
 }

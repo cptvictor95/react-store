@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import Button from '../Forms/Button/button';
 import FormInput from '../Forms/FormInput/formInput';
 import './styles.scss';
+import { Link } from 'react-router-dom';
+
+import AuthWrapper from './../AuthWrapper/authWrapper'
 
 import { signInWithGoogle, auth } from './../../firebase/utils'
 
@@ -11,8 +14,8 @@ const initialState = {
 }
 
 class SignIn extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             ...initialState
         };
@@ -42,42 +45,46 @@ class SignIn extends Component {
     }
     render() {
         const { email, password} = this.state;
-        return (
-            <div className="signIn">
 
-                <div className="wrap">
-                    <h2>Login</h2>
-    
-                    <div className="formWrap">
-                        <form onSubmit={this.handleSubmit}>
-                            <div className="socialSignIn">
-                                {/* Email */}
-                                <FormInput 
-                                    type="email"
-                                    name="email"
-                                    value={email}
-                                    placeholder="Email"
-                                    onChange={this.handleChange}
-                                />
-                                {/* Password */}
-                                <FormInput 
-                                    type="password"
-                                    name="password"
-                                    value={password}
-                                    placeholder="Password"
-                                    onChange={this.handleChange}
-                                />
-                                <Button type="submit">
-                                    Login
-                                </Button>
-                                <Button onClick={signInWithGoogle}>
-                                    Sign In with Google
-                                </Button>
-                            </div>
-                        </form>
-                    </div>
+        const configAuthWrapper = {
+            headline: 'LogIn'
+        }
+        return (
+            <AuthWrapper {...configAuthWrapper}>
+                <div className="signIn__wrap">
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="socialSignIn">
+                            {/* Email */}
+                            <FormInput 
+                                type="email"
+                                name="email"
+                                value={email}
+                                placeholder="Email"
+                                onChange={this.handleChange}
+                            />
+                            {/* Password */}
+                            <FormInput 
+                                type="password"
+                                name="password"
+                                value={password}
+                                placeholder="Password"
+                                onChange={this.handleChange}
+                            />
+                            <Button id="loginBtn" type="submit">
+                                Login
+                            </Button>
+                            <Button id="googleBtn" onClick={signInWithGoogle}>
+                                Sign In with Google
+                            </Button>
+                        </div>
+                        <div className="forgot">
+                            <Link to="/recovery">
+                                Forgot your password?
+                            </Link>
+                        </div>
+                    </form>
                 </div>
-            </div>
+            </AuthWrapper>
         )
     }
 }

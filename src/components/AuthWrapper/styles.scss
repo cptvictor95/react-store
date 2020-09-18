@@ -1,0 +1,42 @@
+.authWrapper {
+    display: block;
+    max-width: 50rem;
+    margin: 4rem auto 6rem;
+    box-shadow: .5rem .5rem 5rem lightgrey;
+    color: #3C332A;
+
+    .wrap {
+        padding: 3rem 1rem 2rem;
+        margin: 1rem auto 2rem;
+
+        h2 {
+            font-size: 22px;
+            line-height: 1;
+            font-weight: 400;
+            text-transform: uppercase;
+            text-align: center;
+            display: block;
+            width: 100%;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .children {
+            margin: 0 auto;
+            ul {
+                padding: 1rem;
+                li {
+                    margin: 0 auto;
+                    padding: 0;
+                    text-align: center;
+                    font-size: 1.6rem;
+                    list-style: none;
+                    p {
+                        margin: 0 auto;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}

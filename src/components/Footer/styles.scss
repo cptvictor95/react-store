@@ -1,10 +1,12 @@
 .footer {
-    background-color: #2575fc;
     .footer__wrap {
-        background-color: #2575fc;
-        height: 10rem;
-        max-width: 1450px;
+        position: absolute fixed;
+        bottom: 0;
+        height: 20rem;
+        // max-width: 1450px;
+        width: 100%;
         padding: 2rem;
         margin: 0 auto;
+        background-color: #A8D4AD;
     }
 }

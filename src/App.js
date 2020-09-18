@@ -11,6 +11,7 @@ import HomeLayout from './layouts/homeLayout.js'
 
 // Components Imports
 import Home from './pages/Home/home';
+import Recovery from './pages/Recovery/passwordRecovery';
 import Registration from './pages/Registration/registration';
 import Login from './pages/Login/login';
 
@@ -19,8 +20,8 @@ const initialState = {
 };
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       ...initialState
     }
@@ -63,21 +64,26 @@ class App extends Component {
                   <Home />
                 </HomeLayout>
               )} />
-  
+
               <Route path='/register' render={() => currentUser ? <Redirect to="/" /> : (
                 <MainLayout currentUser={currentUser}>
                   <Registration />
                 </MainLayout>
               )} />
-  
+
               <Route path='/login' render={() => currentUser ? <Redirect to="/" /> : (
                 <MainLayout currentUser={currentUser}>
                   <Login />
                 </MainLayout>
               )} />
+
+              <Route path='/recovery' render={() => (
+                <MainLayout>
+                  <Recovery />
+                </MainLayout>
+              )} />
   
           </Switch>
-  
         </div>
       );
     }
