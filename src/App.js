@@ -12,6 +12,8 @@ import { checkUserSession } from './redux/User/user.actions';
 // Layouts
 import MainLayout from './layouts/mainLayout.js'
 import HomeLayout from './layouts/homeLayout.js'
+import AdminLayout from './layouts/adminLayout.js'
+import DashboardLayout from './layouts/dashboardLayout.js'
 
 // Component Imports
 import AdminToolbar from './components/AdminToolbar/admintoolbar.js'
@@ -38,7 +40,7 @@ const App = () => {
 
   return (
     <div className="App">
-
+      <AdminToolbar />
       {/* APP ROUTES */}
       <Switch>
           <Route exact={true} path='/' render={() => (
@@ -67,17 +69,17 @@ const App = () => {
 
           <Route path='/dashboard' render={() => (
             <WithAuth>
-              <MainLayout>
+              <DashboardLayout>
                 <Dashboard />
-              </MainLayout>
+              </DashboardLayout>
             </WithAuth>
           )} />
 
           <Route path='/admin' render={() => (
             <WithAdminAuth>
-              <MainLayout>
+              <AdminLayout>
                 <Admin />
-              </MainLayout>
+              </AdminLayout>
             </WithAdminAuth>
           )} />
 
@@ -90,7 +92,6 @@ const App = () => {
           )} />
 
       </Switch>
-      <AdminToolbar />
     </div>
   );
 }

@@ -10,7 +10,7 @@ const mapState = ({ user }) => ({
 
 const useAuth = () => {
     const { currentUser } = useSelector(mapState);
-    const history = useHistory;
+    const history = useHistory();
 
     useEffect(() => {
         if (!currentUser) {
