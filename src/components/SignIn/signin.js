@@ -1,33 +1,44 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import Button from '../Forms/Button/button';
 import FormInput from '../Forms/FormInput/formInput';
 import './styles.scss';
 import { Link, withRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { signInUser, signInWithGoogle, resetAllAuthForms } from './../../redux/User/user.actions';
 
 import AuthWrapper from './../AuthWrapper/authWrapper'
 
-import { signInWithGoogle, auth } from './../../firebase/utils';
 
+const mapState = ({ user }) => ({
+    signInSuccess: user.signInSuccess
+});
 
 const SignIn = (props) => {
+    const { signInSuccess } = useSelector(mapState);
+    const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    useEffect(() => {
+        if (signInSuccess) {
+            resetForm();
+            dispatch(resetAllAuthForms());
+            props.history.push('/');
+        }
+    }, [signInSuccess, props.history, dispatch]);
 
     const resetForm = () => {
         setEmail('');
         setPassword('');
     }
 
-    const handleSubmit = async e => {
+    const handleSubmit = e => {
         e.preventDefault();
+        dispatch(signInUser({ email, password }));
+    }
 
-        try {
-            await auth.signInWithEmailAndPassword(email, password);
-            resetForm();
-            props.history.push('/')
-        } catch(err) {
-            console.log(err);
-        }
+    const handleGoogleSignIn = () => {
+        dispatch(signInWithGoogle());
     }
 
     const configAuthWrapper = {
@@ -57,7 +68,7 @@ const SignIn = (props) => {
                         <Button id="loginBtn" type="submit">
                             Login
                         </Button>
-                        <Button id="googleBtn" onClick={signInWithGoogle}>
+                        <Button id="googleBtn" onClick={handleGoogleSignIn}>
                             Sign In with Google
                         </Button>
                     </div>

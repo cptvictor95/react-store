@@ -1,6 +1,6 @@
 .header {
     height: 10rem;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     padding: 2rem;
 
     .header__nav {
@@ -56,6 +56,17 @@
                     text-transform: uppercase;
                     &:last-child {
                         margin-right: 0;
+                        // background-color: #028090;
+                        padding: .5rem 1rem;
+                        margin: 1rem auto 1rem;
+                        color: #070F08;
+                        background-color: #A8D4AD;
+                        border: none;
+                        border-radius: .5rem;
+                    }
+                    &:last-child:hover {
+                        background-color: #028090;
+                        color: white;
                     }
                 }
             }

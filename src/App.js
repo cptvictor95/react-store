@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.scss';
 import { Switch, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 // hoc
@@ -27,26 +27,26 @@ import Profile from './pages/Profile/profile';
 
 
 const App = (props) => {
-  const { setCurrentUser } = props;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const authListener = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await handleUserProfile(userAuth);
         userRef.onSnapshot(snapshot => {
-          setCurrentUser({
+          dispatch(setCurrentUser({
               id: snapshot.id,
               ...snapshot.data()
-          })
+          }));
         })
       }
-      setCurrentUser(userAuth);
+      dispatch(setCurrentUser(userAuth));
     });
 
     return () => {
       authListener();
     };
-  }, [setCurrentUser]);
+  }, []);
 
 
   return (
@@ -99,14 +99,5 @@ const App = (props) => {
   );
 }
 
-// SET USER STATE GLOBALLY ON APP
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
-});
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-})
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

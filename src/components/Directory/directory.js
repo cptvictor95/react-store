@@ -4,7 +4,7 @@ import './styles.scss';
 
 // import Accessories from './../../assets/acc2.jpeg';
 // import Dresses from './../../assets/img1.jpeg';
-import Teste from './../../assets/bghome.jpg';
+// import Teste from './../../assets/bghome.jpg';
 
 const Directory = () => {
   return (
@@ -19,10 +19,10 @@ const Directory = () => {
             </div> */}
             {/* MY HOMEPAGE */}
             <div className="wrap__item">
-              <h1>HOMEPAGE TITLE</h1>
+              <h1>FIRST PAGE TITLE</h1>
             </div>
-            <div className="wrap__item" style={{backgroundImage: `url(${Teste})`}}>
-              <h1>ANOTHER TEXT</h1>
+            <div className="wrap__item">
+              <h1>SECOND PAGE TITLE</h1>
             </div>
 
         </div>
