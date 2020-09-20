@@ -1,0 +1,41 @@
+.adminToolbar {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    ul, li {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        float: right;
+
+        li {
+            display: inline-block;
+
+            a {
+                display: block;
+                font-size: 1.6rem;
+                line-height: 1;
+                color: white;
+                background-color: #028090;
+                border-radius: .5rem;
+                padding: 1rem;
+                margin-top: 1rem;
+                margin-right: 2rem;
+                transition: all .3 ease-in-out;
+                &:hover {
+                    background-color: #028090;
+                    color: white;
+                    -webkit-transition: all .3s ease-in-out;
+                    -moz-transition: all .3s ease-in-out;
+                    transition: all .3s ease-in-out;
+                }
+            }
+        }
+    }
+}

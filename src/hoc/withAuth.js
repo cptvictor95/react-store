@@ -1,7 +1,7 @@
 
-import { withRouter } from 'react-router-dom'
-import { UseAuth } from './../customHooks'
 
-const WithAuth = (props) => UseAuth(props) && props.children;
+import { useAuth } from './../customHooks'
 
-export default withRouter(WithAuth);
+const WithAuth = (props) => useAuth(props) && props.children;
+
+export default WithAuth;

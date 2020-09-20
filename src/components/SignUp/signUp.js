@@ -18,12 +18,15 @@ const SignUp = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { currentUser, userErr } = useSelector(mapState);
+
+    // USER PROPS
     const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
+    // IF USER IS VALID, REDIRECT TO HOME
     useEffect(() => {
         if (currentUser) {
             resetForm();
@@ -32,6 +35,7 @@ const SignUp = () => {
     
     }, [currentUser, history]);
 
+    // IF USER ERROR, THROW ERROR ARRAY
     useEffect(() => {
     if (Array.isArray(userErr) && userErr.length > 0) {
         setErrors(userErr);
@@ -60,6 +64,7 @@ const SignUp = () => {
     }
 
 
+    // REGISTRATION PAGE TITLE
     const configAuthWrapper = {
         headline: 'Create your account'
     }
@@ -67,6 +72,7 @@ const SignUp = () => {
             <AuthWrapper {...configAuthWrapper}>
                 <div className="signUp__wrap">
 
+                    {/* error array */}
                     {errors.length > 0 && (
                         <ul>
                             {errors.map((err, index) => {
@@ -79,9 +85,10 @@ const SignUp = () => {
                         </ul>
                     )}
 
+                    {/* Registration Form */}
                     <form onSubmit={handleFormSubmit}>
                         <div className="userInfos">
-                            {/* Name */}
+                        {/* Name */}
                         <FormInput 
                             type="text"
                             name="displayName"

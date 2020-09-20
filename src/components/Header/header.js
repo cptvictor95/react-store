@@ -36,7 +36,6 @@ const Header = props => {
                 <Link to='/' onClick={() => signOut()}>
                   logout
                 </Link>
-                {/* <span></span> */}
               </li>
             </ul>
           )}
